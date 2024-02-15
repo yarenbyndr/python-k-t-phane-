@@ -1,0 +1,76 @@
+
+
+kitaplistesi = [] # initialize an empty list
+menu = """
+[1] kitap ekle 
+[2] kitaplari listele
+[3] kitap sil
+[Q] cikis
+"""
+def kitapekle ( kitapadi, kitapyazari, kitapsayfasi, liste):
+     
+    kitapekle = input("kitap ekleyin")
+    
+    kitap = {"ad": "", "yazar": "", "sayfa_sayisi": 0}
+    kitap["ad"] = input("Kitap adini girin: ")
+    kitap["yazar"] = input("Kitap yazarini girin: ")
+    kitap["sayfa_sayisi"] = input("Kitap sayfa sayisini girin: ")
+    print("kitap eklendi")
+    input("ana menüye dönmek için enter'a basin")
+    liste.append(kitap) # add book to list
+
+def liste(liste):
+  j = 0 # initialize counter
+  for i in liste:
+    if j==0:
+        print("kitap adi :",i)
+        j+=1
+    elif j==2:
+       print("kitap yazari :",i)
+       j+=1
+    elif j==3:
+       print("kitap sayfasi  :", i)
+       j=0
+       
+
+def cikis():
+     quit()
+
+while True:
+    print(menu)
+    secim = input("Yapmak istediginiz islemi secin: ").lower()
+
+    if secim == '1':
+         kitapadi =  input ("Kitap adini girin: ")
+        kitapyazari = input("Kitap yazarini girin: ")
+        kitapsayfasi = input("Kitap sayfa sayisini girin: ")
+     for kitap in kitapekle:
+        if kitapadi == "" or kitapyazari == "" or kitapsayfasi == "":
+            print("Boş alan birakilamaz.")
+        else:
+            kitap = {"ad": str (kitapadi ), "yazar": str(kitapyazari), "sayfa_sayisi": int(kitapsayfasi)}
+            kitaplistesi.append(kitap)
+            print("Kitap başariyla eklendi.")
+        kitapekle(kitapadi,kitapyazari,kitapsayfasi,kitaplistesi)
+
+    if secim == '2':
+        # list all books
+        liste(kitaplistesi)
+
+    if secim == '3':
+        # delete a book
+        kitapadi = input("Lütfen silmek istediğiniz kitabin adini giriniz: ")
+        for kitap in kitaplistesi:
+            if kitap["ad"] == kitapadi:
+                kitaplistesi.remove(kitap)
+                print("Kitap başariyla kaldirildi.")
+                break
+            else:
+                print("Kitap bulunamadi.")
+            break
+
+    if secim == "q" or secim == "Q":
+        cikis()
+    else:
+        print("Gecerli bir secenek giriniz.")
+    input("ana menüye dönmek için enter'a basin")
