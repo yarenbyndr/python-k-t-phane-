@@ -20,7 +20,7 @@ def kitapekle ( kitapadi, kitapyazari, kitapsayfasi, liste):
     liste.append(kitap) # add book to list
 
 def liste(liste):
-  j = 0 # initialize counter
+  j = 0 
   for i in liste:
     if j==0:
         print("kitap adi :",i)
@@ -58,7 +58,7 @@ while True:
         liste(kitaplistesi)
 
     if secim == '3':
-        # delete a book
+    
         kitapadi = input("Lütfen silmek istediğiniz kitabin adini giriniz: ")
         for kitap in kitaplistesi:
             if kitap["ad"] == kitapadi:
