@@ -54,7 +54,7 @@ while True:
         kitapekle(kitapadi,kitapyazari,kitapsayfasi,kitaplistesi)
 
     if secim == '2':
-        # list all books
+   
         liste(kitaplistesi)
 
     if secim == '3':
