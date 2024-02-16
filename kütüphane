@@ -1,6 +1,6 @@
 
 
-kitaplistesi = [] # initialize an empty list
+kitaplistesi = []  
 menu = """
 [1] kitap ekle 
 [2] kitaplari listele
