@@ -4,6 +4,10 @@ class Library:
         self.file = open(self.file_name, 'a+')
         self.kitaplar = []
         self.liste ()
+        
+    def __del__(self): 
+       self.file.close()
+    
     def kitapekle(self):
         kitapadi = input("Kitap adını girin: ")
         kitapyazari = input("Kitap yazarını girin: ")
@@ -41,18 +45,6 @@ class Library:
         else:
             print(f"{kitapadi} kitabı kütüphanede mevcut değil bu yüzden silinemez.")
 
-    def __del__(self): 
-        
-        self.file.close()
-
-        
-    def cikis(self):
-        if secim == "q" or secim == "Q" or secim == "4":
-          cikis()
-
-        quit()
-
-
 def main():
     library = Library()
     while True:
@@ -71,12 +63,15 @@ def main():
             library.liste()
         elif secim == '3':
             library.kitapsil()
-        elif secim == '4':
-            library.cikis()
+        elif secim.lower() == '4' or secim == 'q' or secim == 'Q' :
+          
+            print("çıkış")
+
+            break
         else:
             print("Geçerli bir seçenek giriniz.")
 
-        input("Ana menüye dönmek için Enter'a basın")
+         
 
 if __name__ == "__main__":
     main()
