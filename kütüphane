@@ -1,1 +1,82 @@
+class Library:
+    def __init__(self):
+        self.file_name =  "books.txt" 
+        self.file = open(self.file_name, 'a+')
+        self.kitaplar = []
+        self.liste ()
+    def kitapekle(self):
+        kitapadi = input("Kitap adını girin: ")
+        kitapyazari = input("Kitap yazarını girin: ")
+        kitapbasimyili = int(input("Kitap basım yılını girin: "))
+        kitapsayfasi = int(input("Kitap sayfa sayısını girin: "))
 
+        self.file.write(f"Kitap ismi: {kitapadi}, Kitap yazarı: {kitapyazari}, "
+                        f"Kitabın basım yılı: {kitapbasimyili}, Kitabın sayfa sayısı: {kitapsayfasi}\n")
+        print(f"\n{kitapadi}, {kitapyazari} listeye eklenmiştir...\n")
+        #self.file.close()
+
+
+      
+    def liste(self):
+        self.file.seek(0)
+        book_data = self.file.readlines()
+        for books in book_data:
+            book_info = books.strip().split(",")
+            print(f'{book_info[0]}, {book_info[1]}')
+            input("Ana menüye dönmek için Enter'a basın") 
+            
+    def kitapsil(self):
+        kitapadi = input("Silmek istediğiniz kitabın adını girin: ")
+        with open(self.file_name, "r") as file:
+            lines = file.readlines()
+        removed = 0
+        with open(self.file_name, "w") as file:
+            for line in lines:
+                if kitapadi not in line:
+                    file.write(line)
+                else:
+                    removed = 1
+        if removed:
+            print("Kitap başarıyla silindi.")
+        else:
+            print(f"{kitapadi} kitabı kütüphanede mevcut değil bu yüzden silinemez.")
+
+    def __del__(self): 
+        
+        self.file.close()
+
+        
+    def cikis(self):
+        if secim == "q" or secim == "Q" or secim == "4":
+          cikis()
+
+        quit()
+
+
+def main():
+    library = Library()
+    while True:
+        menu = """
+        *****  MENÜ  *****
+        [1] Kitap ekle 
+        [2] Kitapları listele
+        [3] Kitap sil
+        [4] Çıkış
+        """
+        print(menu)
+        secim = input("Yapmak istediğiniz işlemi seçin: ")
+        if secim == '1':
+            library.kitapekle()
+        elif secim == '2':
+            library.liste()
+        elif secim == '3':
+            library.kitapsil()
+        elif secim == '4':
+            library.cikis()
+        else:
+            print("Geçerli bir seçenek giriniz.")
+
+        input("Ana menüye dönmek için Enter'a basın")
+
+if __name__ == "__main__":
+    main()
