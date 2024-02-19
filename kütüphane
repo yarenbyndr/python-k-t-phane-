@@ -5,8 +5,7 @@ class Library:
         self.kitaplar = []
         self.liste ()
         
-    def __del__(self): 
-       self.file.close()
+ 
     
     def kitapekle(self):
         kitapadi = input("Kitap adını girin: ")
@@ -17,8 +16,7 @@ class Library:
         self.file.write(f"Kitap ismi: {kitapadi}, Kitap yazarı: {kitapyazari}, "
                         f"Kitabın basım yılı: {kitapbasimyili}, Kitabın sayfa sayısı: {kitapsayfasi}\n")
         print(f"\n{kitapadi}, {kitapyazari} listeye eklenmiştir...\n")
-        #self.file.close()
-
+ 
 
       
     def liste(self):
@@ -44,7 +42,10 @@ class Library:
         if removed:
             print("Kitap başarıyla silindi.")
         else:
-            print(f"{kitapadi} kitabı kütüphanede mevcut değil bu yüzden silinemez.")
+            print(f"{kitapadi} bulunamadı")
+    def __del__(self): 
+        
+        self.file.close()
 
 def main():
     library = Library()
