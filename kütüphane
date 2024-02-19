@@ -31,6 +31,7 @@ class Library:
             
     def kitapsil(self):
         kitapadi = input("Silmek istediğiniz kitabın adını girin: ")
+        kitapyazari = input("Kitap yazarını girin: ")
         with open(self.file_name, "r") as file:
             lines = file.readlines()
         removed = 0
